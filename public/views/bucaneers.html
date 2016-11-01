@@ -1,1 +1,22 @@
 <h1>Bucaneers</h1>
+
+  <div class="container-fluid">
+  <div ng-repeat="bucaneer in bucaneers">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left">
+                        <img ng-class="image" ng-src="{{bucaneer.image_url}}">
+                    </div>
+                    <div class="media-body">
+                        <h2>{{bucaneer.name}}</h2>
+                        <br>
+                        <p><strong>Poison:</strong> {{bucaneer.poison}}</p>
+                        <br>
+                        <p><strong>Notable Accessory:</strong> {{bucaneer.accessory}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

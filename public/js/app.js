@@ -4,10 +4,7 @@ app.config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/bucaneers.html',
-        controller: 'HomeController'
+        controller: 'BucaneerController'
       })
-      .when('/show_page/:id', {
-        templateUrl: 'partials/show_page.html',
-        controller: 'HomeController'
-      })
+      
 });
