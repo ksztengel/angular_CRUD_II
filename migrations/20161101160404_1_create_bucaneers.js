@@ -6,7 +6,7 @@ exports.up = function(knex,Promise) {
             table.string('name').notNullable().defaultTo('');
             table.string('poison').notNullable().defaultTo('');
             table.string('accessory').notNullable().defaultTo('');
-            table.string('image_url').notNullable();
+            table.string('image').notNullable();
             table.timestamps(true, true);
     })
 }

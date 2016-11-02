@@ -13,4 +13,13 @@ router.get('/', (req, res, next) => {
 
 });
 
+router.post('/', (req, res, next) => {
+  knex('bucaneers')
+    .insert(req.body)
+    .then((bucaneer) => {
+      //send data to client
+      res.json(bucaneer)
+    })
+})
+
 module.exports = router;
