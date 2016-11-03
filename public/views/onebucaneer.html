@@ -1,20 +1,51 @@
 <div class="panel panel-default">
-   <div class="panel-body">
-     <div class="media">
-       <div class="media-left">
-         <img class="image" class="media-object" ng-src="{{oneBucaneer.image}}">
-       </div>
-       <div class="media-body">
-         <ul>
-           <h2>{{oneBucaneer.name}}</h2></a>
-           <br>
-           <p><strong>Poison:</strong> {{oneBucaneer.poison}}</p>
-           <br>
-           <p><strong>Notable Accessory:</strong> {{oneBucaneer.accessory}}</p>
-             <a href="/#/edit_bucaneer/{{bucaneer.id}}">EDIT</a>
-            <a href="#">DELETE</a>
-         </ul>
-       </div>
-     </div>
-   </div>
- </div>
+    <div class="panel-body">
+        <div class="media">
+            <div class="media-left">
+                <img class="image" class="media-object" ng-src="{{oneBucaneer.image}}">
+            </div>
+            <div class="media-body">
+                <ul>
+                    <h2>{{oneBucaneer.name}}</h2></a>
+                    <br>
+                    <p><strong>Poison:</strong> {{oneBucaneer.poison}}</p>
+                    <br>
+                    <p><strong>Notable Accessory:</strong> {{oneBucaneer.accessory}}</p>
+                    <a ng-click="showEditForm = !showEditForm">EDIT</a>
+                    <a ng-click="someFunction(oneBucaneer.id)">DELETE</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <form ng-show="showEditForm" name="editForm" ng-submit="submitEdit(oneBucaneer)" $novalidate>
+
+            <div class="form-group" ng-class="{ 'has-error' : editForm.name.$invalid && !userForm.username.$pristine ,'has-success' : editForm.name.$valid }">
+                <label class="control-label" for="name">Name</label>
+                <input value="{{oneBucaneer.name}}" type="text" name="name" class="form-control" ng-model="oneBucaneer.name" ng-required="true" id="name" ng-minlength="3" ng-maxlength="12">
+                <p ng-show="editForm.name.$error.minlength" class="help-block">name is too short.</p>
+                <p ng-show="editForm.name.$error.maxlength" class="help-block">name is too long.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : editForm.poison.$invalid && !editForm.poison.$pristine ,'has-success' : editForm.poison.$valid }">
+                <label class="control-label" for="poison">Poison</label>
+                <input value="{{oneBucaneer.poison}}" type="text" name="poison" class="form-control" ng-model="oneBucaneer.poison" id="poison" ng-minlength="3" ng-maxlength="12" ng-required="true">
+                <p ng-show="editForm.poison.$error.minlength" class="help-block">poison is too short.</p>
+                <p ng-show="editForm.poison.$error.maxlength" class="help-block">poison is too long.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : editForm.accessory.$invalid && !editForm.accessory.$pristine ,'has-success' : editForm.accessory.$valid }">
+                <label class="control-label" for="email">Notable Accessory: </label>
+                <input value="{{oneBucaneer.accessory}}" type=t ype="text" id="accessory" name="accessory" class="form-control" ng-required="true" ng-model="oneBucaneer.accessory">
+                <p ng-show="editForm.accessory.$invalid && !editForm.accessory.$pristine" class="help-block">Enter a valid accessory.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : editForm.image.$invalid && !editForm.image.$pristine ,'has-success' : editForm.image.$valid }">
+                <label class="control-label" for="image">Image</label>
+                <input value="{{oneBucaneer.image}}" type="url" id="image" name="image" class="form-control" ng-required="true" ng-model="oneBucaneer.image">
+                <p ng-show="editForm.image.$invalid && !editForm.image.$pristine" class="help-block">Enter a url.</p>
+            </div>
+
+            <input type="submit" ng-click="showForm=false">
+        </form>
+    </div>

@@ -2,40 +2,39 @@
 <button class="btn waves-effect waves-light #cfd8dc blue-grey lighten-4" type="submit" name="action" ng-click="showForm = !showForm">Add A Bucaneer
 </button>
 
-  <div class="container-fluid">
-
+<div class="container-fluid">
 
     <form ng-show="showForm" name="postForm" ng-submit="submitNew(newBucaneer)" $novalidate>
 
-    <div class="form-group" ng-class="{ 'has-error' : postForm.name.$invalid && !userForm.username.$pristine ,'has-success' : postForm.name.$valid }">
-      <label class="control-label" for="name">Name:</label>
-      <input autofocus type="text" name="name" class="form-control" ng-model="post.name" ng-required="true" id="name" ng-minlength="3" ng-maxlength="12" >
-      <p ng-show="postForm.name.$error.minlength" class="help-block">name is too short.</p>
-      <p ng-show="postForm.name.$error.maxlength" class="help-block">name is too long.</p>
-    </div>
+        <div class="form-group" ng-class="{ 'has-error' : postForm.name.$invalid && !userForm.username.$pristine ,'has-success' : postForm.name.$valid }">
+            <label class="control-label" for="name">Name:</label>
+            <input autofocus type="text" name="name" class="form-control" ng-model="post.name" ng-required="true" id="name" ng-minlength="3" ng-maxlength="12">
+            <p ng-show="postForm.name.$error.minlength" class="help-block">name is too short.</p>
+            <p ng-show="postForm.name.$error.maxlength" class="help-block">name is too long.</p>
+        </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : postForm.poison.$invalid && !postForm.poison.$pristine ,'has-success' : postForm.poison.$valid }">
-      <label class="control-label" for="poison">Poison</label>
-      <input type="text" name="poison" class="form-control" ng-model="post.poison" id="poison" ng-minlength="3" ng-maxlength="12" ng-required="true">
-      <p ng-show="postForm.poison.$error.minlength" class="help-block">poison is too short.</p>
-      <p ng-show="postForm.poison.$error.maxlength" class="help-block">poison is too long.</p>
-    </div>
+        <div class="form-group" ng-class="{ 'has-error' : postForm.poison.$invalid && !postForm.poison.$pristine ,'has-success' : postForm.poison.$valid }">
+            <label class="control-label" for="poison">Poison</label>
+            <input type="text" name="poison" class="form-control" ng-model="post.poison" id="poison" ng-minlength="3" ng-maxlength="12" ng-required="true">
+            <p ng-show="postForm.poison.$error.minlength" class="help-block">poison is too short.</p>
+            <p ng-show="postForm.poison.$error.maxlength" class="help-block">poison is too long.</p>
+        </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : postForm.accessory.$invalid && !postForm.accessory.$pristine ,'has-success' : postForm.accessory.$valid }">
-      <label class="control-label" for="email">Notable Accessory</label>
-      <input type="text" id="accessory" name="accessory" class="form-control" ng-required="true" ng-model="post.accessory">
-      <p ng-show="postForm.accessory.$invalid && !postForm.accessory.$pristine" class="help-block">Enter a valid accessory.</p>
-    </div>
+        <div class="form-group" ng-class="{ 'has-error' : postForm.accessory.$invalid && !postForm.accessory.$pristine ,'has-success' : postForm.accessory.$valid }">
+            <label class="control-label" for="email">Notable Accessory</label>
+            <input type="text" id="accessory" name="accessory" class="form-control" ng-required="true" ng-model="post.accessory">
+            <p ng-show="postForm.accessory.$invalid && !postForm.accessory.$pristine" class="help-block">Enter a valid accessory.</p>
+        </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : postForm.image.$invalid && !postForm.image.$pristine ,'has-success' : postForm.image.$valid }">
-      <label class="control-label" for="image">Image</label>
-      <input type="url" id="image" name="image" class="form-control" ng-required="true" ng-model="post.image">
-      <p ng-show="postForm.image.$invalid && !postForm.image.$pristine" class="help-block">Enter a url.</p>
-    </div>
+        <div class="form-group" ng-class="{ 'has-error' : postForm.image.$invalid && !postForm.image.$pristine ,'has-success' : postForm.image.$valid }">
+            <label class="control-label" for="image">Image</label>
+            <input type="url" id="image" name="image" class="form-control" ng-required="true" ng-model="post.image">
+            <p ng-show="postForm.image.$invalid && !postForm.image.$pristine" class="help-block">Enter a url.</p>
+        </div>
 
-    <input type="submit" ng-click="showForm=false" ng-disabled="newPostForm.$invalid">
-  </form>
-  <div ng-repeat="bucaneer in bucaneers">
+        <input type="submit" ng-click="showForm=false" ng-disabled="newPostForm.$invalid">
+    </form>
+    <div ng-repeat="bucaneer in bucaneers">
         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset panel panel-default">
             <div class="panel-body">
                 <div class="media">
@@ -43,8 +42,8 @@
                         <img class="image" ng-class="image" ng-src="{{bucaneer.image}}">
                     </div>
                     <div class="media-body">
-                      <a href="/#/onebucaneer/{{bucaneer.id}}">
-                        <h2>{{bucaneer.name}}</h2></a>
+                        <a href="/#/onebucaneer/{{bucaneer.id}}">
+                            <h2>{{bucaneer.name}}</h2></a>
                         <br>
                         <p><strong>Poison:</strong> {{bucaneer.poison}}</p>
                         <br>

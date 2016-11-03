@@ -10,5 +10,5 @@ app.config(function($routeProvider) {
         templateUrl: '../views/onebucaneer.html',
         controller: 'OneBucaneerController'
       })
-
+      
 });

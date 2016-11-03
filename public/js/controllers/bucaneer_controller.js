@@ -1,52 +1,42 @@
 'use strict'
-app.controller('BucaneerController', function ($scope,BucaneerService) {
+app.controller('BucaneerController', function($scope, BucaneerService) {
 
-      $scope.view={}
-  BucaneerService.all().then(bucaneers => {
-      // console.log('bucaneers', bucaneers.data);
-      $scope.bucaneers = bucaneers.data
-  })
+    $scope.view = {}
+    BucaneerService.all().then(bucaneers => {
+        $scope.bucaneers = bucaneers.data
+    })
 
-  $scope.submitNew = function(){
-  BucaneerService.new($scope.post).then(newBucaneer =>{
-              $scope.bucaneers.push($scope.post),
-              $scope.post = {},
-              $scope.postForm.$setPristine(),
-              $scope.newBucaneer = {}
-      })
+    $scope.submitNew = function() {
+        BucaneerService.new($scope.post).then(newBucaneer => {
+            $scope.bucaneers.push($scope.post),
+                $scope.post = {},
+                $scope.postForm.$setPristine(),
+                $scope.newBucaneer = {}
+        })
     }
 })
 
-app.controller('OneBucaneerController', function($scope, BucaneerService,$routeParams){
+app.controller('OneBucaneerController', function($scope, BucaneerService, $routeParams, $location) {
 
-        var id = $routeParams.id
-        console.log('id', id);
-        BucaneerService.one(id).then(results =>{
-          console.log('results:', results);
-              $scope.oneBucaneer = results.data
+    var id = $routeParams.id
+    BucaneerService.one(id).then(results => {
+        $scope.oneBucaneer = results.data
 
-          })
+    })
 
-})
+    $scope.someFunction = function(id) {
+        BucaneerService.delete(id).then(results => {
+            $location.url('/')
 
-app.controller('EditBucaneerController', function($scope, BucaneerService,$routeParams){
+        })
+    }
 
-        var id = $routeParams.id
-        console.log('id', id);
-        BucaneerService.edit(id).then(results =>{
-          console.log('results:', results);
-              $scope.oneBucaneer = results.data
+    $scope.submitEdit = function() {
+        const editBucaneer = $scope.oneBucaneer
+        BucaneerService.edit(editBucaneer).then(results => {
+            console.log('edit', $scope.editBucaneer);
+            $location.url('/')
 
-          })
-
-})
-app.controller('DeleteBucaneerController', function($scope, BucaneerService,$routeParams){
-        var id = $routeParams.id
-        console.log('id', id);
-        BucaneerService.delete(id).then(results =>{
-          console.log('results:', results);
-              $scope.oneBucaneer = results.data
-
-          })
-
+        })
+    }
 })
