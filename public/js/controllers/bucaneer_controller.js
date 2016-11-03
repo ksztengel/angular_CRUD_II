@@ -1,3 +1,4 @@
+'use strict'
 app.controller('BucaneerController', function ($scope,BucaneerService) {
 
       $scope.view={}
@@ -14,4 +15,38 @@ app.controller('BucaneerController', function ($scope,BucaneerService) {
               $scope.newBucaneer = {}
       })
     }
+})
+
+app.controller('OneBucaneerController', function($scope, BucaneerService,$routeParams){
+
+        var id = $routeParams.id
+        console.log('id', id);
+        BucaneerService.one(id).then(results =>{
+          console.log('results:', results);
+              $scope.oneBucaneer = results.data
+
+          })
+
+})
+
+app.controller('EditBucaneerController', function($scope, BucaneerService,$routeParams){
+
+        var id = $routeParams.id
+        console.log('id', id);
+        BucaneerService.edit(id).then(results =>{
+          console.log('results:', results);
+              $scope.oneBucaneer = results.data
+
+          })
+
+})
+app.controller('DeleteBucaneerController', function($scope, BucaneerService,$routeParams){
+        var id = $routeParams.id
+        console.log('id', id);
+        BucaneerService.delete(id).then(results =>{
+          console.log('results:', results);
+              $scope.oneBucaneer = results.data
+
+          })
+
 })
