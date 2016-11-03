@@ -1,7 +1,9 @@
 <h1>Bucaneers</h1>
-<button class="btn waves-effect waves-light #cfd8dc blue-grey lighten-4" type="submit" name="action" ng-click="showForm = !showForm">Add A Bucaneer
-</button>
-
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset">
+      <button type="button" class="btn btn-default navbar-btn" ng-click="showForm = !showForm">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Pirate
+      </button>
+    </div>
 <div class="container-fluid">
 
     <form ng-show="showForm" name="postForm" ng-submit="submitNew(newBucaneer)" $novalidate>
